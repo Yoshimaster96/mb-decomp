@@ -44,7 +44,7 @@ start_loop:
 	add	#0x04, r2			;|
 	bf	start_loop			;/
 	nop
-	mov.l	_fpscr_ref, r0			;\Initialize FPSCR register
+	mov.l	_fpscr_val_ref, r0		;\Initialize FPSCR register
 	lds	r0, fpscr			;/
 	mova	_entry_ref, r0			;\Setup stack pointer and main address
 	mov.l	@r0+, r15			;|
@@ -105,7 +105,7 @@ _stack_ref:
 	.dl __stack_begin			; r15
 _entry_ref:
 	.dl main				; r0
-_fpscr_ref:
+_fpscr_val_ref:
 	.dl 0x00040001
 _test_mode_ref:
 	.dl TEST_MODE_FLAG
