@@ -1,1 +1,1 @@
-gcc -o dump-files.c dump-files.h -std=c99
+gcc -o dump-files dump-files.c -std=c99
