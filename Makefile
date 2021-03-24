@@ -10,6 +10,9 @@ LD      := $(CROSS_PREFIX)ld
 OBJCOPY := $(CROSS_PREFIX)objcopy
 SHA1SUM := sha1sum
 
+ASFLAGS := -EL
+LDFLAGS := -EL
+
 ### Files ###
 BASEROM := baserom.bin
 BIN := monkeyball.bin
@@ -25,10 +28,10 @@ ifeq ($(COMPARE),1)
 endif
 
 $(ELF): $(LDSCRIPT) $(O_FILES)
-	$(LD) -T $(LDSCRIPT) $(O_FILES) -o $@
+	$(LD) $(LDFLAGS) -T $(LDSCRIPT) $(O_FILES) -o $@
 
 %.o: %.s
-	$(AS) $< -o $@
+	$(AS) $(ASFLAGS) $< -o $@
 
 clean:
 	$(RM) $(BIN) $(ELF) $(O_FILES)
