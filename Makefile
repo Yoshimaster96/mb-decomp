@@ -18,7 +18,7 @@ BASEROM := baserom.bin
 BIN := monkeyball.bin
 ELF := monkeyball.elf
 LDSCRIPT := ldscript.ld
-S_FILES := $(wildcard asm/*.s)
+S_FILES := $(wildcard asm/*.s) $(wildcard src/*.s)
 O_FILES := $(S_FILES:.s=.o)
 
 $(BIN): $(ELF)

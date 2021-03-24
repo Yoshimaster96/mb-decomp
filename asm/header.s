@@ -118,10 +118,10 @@ pad_string 32, "CREDIT TO CONTINUE"
 .4byte          0,           0,           0
 
 # Main Entry Point
-.4byte 0x0C020000
+.4byte _start
 
 # Test Entry Point
-.4byte 0x0C020004
+.4byte _start_testmode
 
 # Supported Regions (bit 0 = Japan, bit 1 = USA, bit 2 = Export, bit 3 = Korea, bit 4 = Australia)
 .byte 0xFF  ;# All regions are supported.
