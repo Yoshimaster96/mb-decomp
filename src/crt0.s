@@ -10,11 +10,11 @@
 .section .text
 _start:
 	bra	_start_L1			;# Normal entry point (r1 is already 0?)
-	mov	#0x00, r1			;# Test mode entry point
+	 mov	#0x00, r1			;# Test mode entry point
 _start_test:
 	mov	#0x01, r1
 _start_L1:
-	mov.l	_test_mode_ref, r0		;#\Set TEST_MODE_FLAG
+	mov.l	_test_mode_ref, r0		;#\Set _testModeFlag
 	mov.l	r1, @r0				;#/
 	mova	_clear_regs, r0			;#\Jump to _clear_regs
 	mov.l	_p2_mask_ref, r1		;#|(make this an uncached address)
@@ -22,8 +22,9 @@ _start_L1:
 	mov.l	_p2_bits_ref, r1		;#|
 	or	r1, r0				;#|
 	jmp	@r0				;#|
-	nop					;#/
+	 nop					;#/
 
+	.balign 4
 _clear_regs:
 	mov.l	_ccr_addr_ref, r0		;#\Initialize CCR register
 	mov.l	_ccr_val_ref, r1		;#|(enable ICE, OCE, and CB flags)
@@ -45,7 +46,7 @@ start_loop:
 	dt	r4				;#|
 	add	#0x04, r2			;#|
 	bf	start_loop			;#/
-	nop
+	 nop
 	mov.l	_fpscr_val_ref, r0		;#\Initialize FPSCR register
 	lds	r0, fpscr			;#/
 	mova	_stack_ref, r0			;#\Setup stack pointer and main address
@@ -82,10 +83,10 @@ start_loop:
 	fmov	fr0, fr14			;#|
 	fmov	fr0, fr15			;#/
 	jsr	@r0				;#\Call main
-	nop					;#/
+	 nop					;#/
 __ExitProcess:
 	bra	__ExitProcess			;#\Infinite loop
-	nop					;#/
+	 nop					;#/
 
 	nop
 	nop
@@ -94,10 +95,9 @@ _unk_0C020094:
 	nop					;#\Do nothing and return?
 	nop					;#|
 	rts					;#|
-	nop					;#/
+	 nop					;#/
 
-	nop
-	nop
+	.balign 8
 _sbss_ref:
 	.4byte __sbss				;# r2
 _ebss_ref:

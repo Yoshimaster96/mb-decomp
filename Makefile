@@ -16,7 +16,7 @@ LDFLAGS := -EL
 ### Files ###
 BASEROM := baserom.bin
 BIN := monkeyball.bin
-ELF := monkeyball.elf
+ELF := $(BIN:.bin=.elf)
 LDSCRIPT := ldscript.ld
 S_FILES := $(wildcard asm/*.s) $(wildcard src/*.s)
 O_FILES := $(S_FILES:.s=.o)
@@ -28,7 +28,7 @@ ifeq ($(COMPARE),1)
 endif
 
 $(ELF): $(LDSCRIPT) $(O_FILES)
-	$(LD) $(LDFLAGS) -T $(LDSCRIPT) $(O_FILES) -o $@
+	$(LD) $(LDFLAGS) -T $(LDSCRIPT) $(O_FILES) -Map $(@:.elf=.map) -o $@
 
 %.o: %.s
 	$(AS) $(ASFLAGS) $< -o $@

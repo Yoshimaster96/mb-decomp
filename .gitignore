@@ -3,6 +3,7 @@
 *.exe
 *.bin
 *.elf
+*.map
 
 # Temporary Ghidra Files
 ghidra/mb-decomp.rep/mb-decomp.*
