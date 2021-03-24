@@ -8,11 +8,12 @@
 
 .section text
 _start:
-	bra	_start_L1			; Normal entry point (r1 is already 0?)
-	mov	#0x00, r1			; Test mode entry point
-	mov	#0x01, r1
+	bra	_start_L1			; Normal entry point
+	mov	#0x00, r1
+_start_test:
+	mov	#0x01, r1			; Test mode entry point
 _start_L1:
-	mov.l	TEST_MODE_FLAG, r0		;\Set TEST_MODE_FLAG
+	mov.l	_test_mode_ref, r0		;\Set _testModeFlag
 	mov.l	r1, @r0				;/
 	mova	_clear_regs, r0			;\Jump to _clear_regs
 	mov.l	_p2_mask_ref, r0		;|(make this an uncached address)
@@ -85,7 +86,7 @@ __ExitProcess:
 	bra	__ExitProcess			;\Infinite loop
 	nop					;/
 
-	.align 4
+	nop
 	nop
 	nop
 _unk_0C020094:
@@ -94,7 +95,6 @@ _unk_0C020094:
 	rts					;|
 	nop					;/
 
-	.align 4
 	nop
 	nop
 _sbss_ref:
@@ -108,7 +108,7 @@ _entry_ref:
 _fpscr_val_ref:
 	.dl 0x00040001
 _test_mode_ref:
-	.dl TEST_MODE_FLAG
+	.dl _testModeFlag
 _p2_mask_ref:
 	.dl 0x1FFFFFFF
 _p2_bits_ref:
