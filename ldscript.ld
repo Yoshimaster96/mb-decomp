@@ -31,3 +31,4 @@ __sbss = 0x0C20CAE0;
 __ebss = 0x000580F0;
 __stack_begin = 0x0CC00000;
 main = 0x0C0200E0;
+_testModeFlag = 0x0C0CAEF4;
