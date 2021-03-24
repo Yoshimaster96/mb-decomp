@@ -1,0 +1,8 @@
+# Build Outputs
+*.o
+*.exe
+*.bin
+*.elf
+
+# Temporary Ghidra Files
+ghidra/mb-decomp.rep/mb-decomp.*
