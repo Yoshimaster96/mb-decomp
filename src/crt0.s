@@ -8,8 +8,8 @@
 
 .section text
 _start:
-	bra	_start_L1			; Normal entry point
-	mov	#0x00, r1
+	bra	_start_L1			;\Normal entry point
+	mov	#0x00, r1			;/
 _start_test:
 	mov	#0x01, r1			; Test mode entry point
 _start_L1:
@@ -35,7 +35,7 @@ _clear_regs:
 	nop					;|
 	nop					;|
 	nop					;/
-	mova	_sbss_ref, r0			;\Get BSS location and size
+	mova	_bss_addr_ref, r0		;\Get BSS location and size
 	mov.l	@r0+, r2			;|
 	mov	#0x00, r3			;|
 	mov.l	@r0+, r4			;/
@@ -97,10 +97,10 @@ _unk_0C020094:
 
 	nop
 	nop
-_sbss_ref:
+_bss_addr_ref:
 	.dl __sbss				; r2
-_ebss_ref:
-	.dl __ebss				; r4
+_bss_sz_ref:
+	.dl __ebss-__sbss			; r4
 _stack_ref:
 	.dl __stack_begin			; r15
 _entry_ref:

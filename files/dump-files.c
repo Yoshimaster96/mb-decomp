@@ -30,8 +30,9 @@ int main(int argc, char ** argv) {
 		if(size==1) {
 			//Get size from list of 10 LZ files (for stages)
 			fseek(fp,offset+72,SEEK_SET);
-			size = getc(fp)|(getc(fp)<<8)|(getc(fp)<<16)|(getc(fp)<<24);
-			size += getc(fp)|(getc(fp)<<8)|(getc(fp)<<16)|(getc(fp)<<24);
+			long lo = getc(fp)|(getc(fp)<<8)|(getc(fp)<<16)|(getc(fp)<<24);
+			long ls = getc(fp)|(getc(fp)<<8)|(getc(fp)<<16)|(getc(fp)<<24);
+			size = lo+ls;
 		}
 		if(size==2) {
 			//Get size from SPSD file
