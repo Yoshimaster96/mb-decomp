@@ -55,8 +55,8 @@ SECTIONS
 	. = 0x27C0000; files/snd/stream/st1a1.spsd.o(.data);
 	. = 0x27E0000; files/snd/stream/st2a2.spsd.o(.data);
 	. = 0x2A60000; files/snd/stream/st3b2.spsd.o(.data);
-	. = 0x2D00000; files/common/chara_p.lz.o(.data);
-	. = 0x3D00000; files/common/common_p.lz.o(.data);
+	. = 0x2D00000; files/init/chara_p.lz.o(.data);
+	. = 0x3D00000; files/init/common_p.lz.o(.data);
 	. = 0x4100000; files/bg/bg_a_p.lz.o(.data);
 	. = 0x4160000; files/bg/bg_b_p.lz.o(.data);
 	. = 0x41C0000; files/bg/bg_c_p.lz.o(.data);
@@ -80,8 +80,8 @@ SECTIONS
 	. = 0x5400000; files/stage/st101_110_p.lz.o(.data);
 	. = 0x5580000; files/stage/st111_120_p.lz.o(.data);
 	. = 0x5700000; files/stage/st121_130_p.lz.o(.data);
-	. = 0x5900000; files/common/common.lz.o(.data);
-	. = 0x5C00000; files/common/chara.lz.o(.data);
+	. = 0x5900000; files/init/common.lz.o(.data);
+	. = 0x5C00000; files/init/chara.lz.o(.data);
 	. = 0x5D00000; files/bg/bg_a.lz.o(.data);
 	. = 0x5E00000; files/bg/bg_b.lz.o(.data);
 	. = 0x5F00000; files/bg/bg_c.lz.o(.data);
