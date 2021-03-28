@@ -18,10 +18,10 @@ bg/bg_g.lz 06600000 00000000
 bg/bg_h.lz 06700000 00000000
 bg/bg_i.lz 06800000 00000000
 bg/bg_j.lz 06900000 00000000
-common/chara_p.lz 03000000 00000000
-common/common_p.lz 04000000 00000000
-common/chara.lz 05F00000 00000000
-common/common.lz 05C00000 00000000
+init/chara_p.lz 03000000 00000000
+init/common_p.lz 04000000 00000000
+init/chara.lz 05F00000 00000000
+init/common.lz 05C00000 00000000
 motdat.bin 09800000 00060480
 motlabel.bin 09A00000 00000DA2
 motskl.bin 09A40000 000021EC
@@ -101,3 +101,8 @@ snd/se/ape.dtpk 0AD40000 00000003
 snd/se/gal.dtpk 0AE20000 00000003
 snd/se/kid.dtpk 0AF00000 00000003
 snd/driver.bin 0AFE0000 0000B1E4
+bmp/bmp_com.lz 08800000 00000000
+bmp/bmp_sel.lz 08900000 00000000
+bmp/bmp_adv.lz 08A00000 00000000
+bmp/bmp_rnk.lz 08B00000 00000000
+bmp/bmp_end.lz 08C00000 00000000

@@ -16,7 +16,7 @@ int main(int argc, char ** argv) {
 		return -1;
 	}
 	FILE * list = fopen("file-list.txt","r");
-	for(int i=0; i<103; i++) {
+	for(int i=0; i<108; i++) {
 		//Get data from list
 		char fileName[80];
 		long offset,size;
