@@ -7,3 +7,6 @@
 
 # Temporary Ghidra Files
 ghidra/mb-decomp.rep/mb-decomp.*
+
+# Editor swap files
+*.sw*
