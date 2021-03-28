@@ -123,7 +123,10 @@ SECTIONS
 	. = 0x8E40000; files/snd/stream/st5a2.spsd.o(.data);
 	. = 0x91A0000; files/snd/stream/st5b2.spsd.o(.data);
 	/* TODO: What is this? */
-	. = 0x9500000; asm/files.o(.rodata);
+	. = 0x9500000; files/motdat.bin.o(.data);
+	. = 0x9680000; files/motinfo.bin.o(.data);
+	. = 0x9700000; files/motlabel.bin.o(.data);
+	. = 0x9740000; files/motskl.bin.o(.data);
 	. = 0x9760000; files/snd/stream/st5b1.spsd.o(.data);
 	. = 0x97A0000; files/snd/stream/st4a2.spsd.o(.data);
 	. = 0x99C0000; files/snd/stream/ent2.spsd.o(.data);
@@ -141,10 +144,7 @@ SECTIONS
 	. = 0xAB20000; files/snd/se/gal.dtpk.o(.data);
 	. = 0xAC00000; files/snd/se/kid.dtpk.o(.data);
 	. = 0xACE0000; files/snd/driver.bin.o(.data);
-	. = 0xC500000; files/motdat.bin.o(.data);
-	. = 0xC600000; files/motlabel.bin.o(.data);
-	. = 0xC604000; files/motskl.bin.o(.data);
-	. = 0xC620000; files/motinfo.bin.o(.data);
+	
     }
 
     /* Discard everything not specifically mentioned above. */
