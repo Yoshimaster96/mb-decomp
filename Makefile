@@ -58,5 +58,16 @@ $(DATAFILES): $(EXTRACT) files/file-list.txt $(BASEROM)
 	@echo 'Extracting Files...'
 	cd files && ./dump-files$(EXE) ../baserom.bin
 
+$(BASEROM):
+	@echo 'Error: $(BASEROM) not found'
+	@echo 'Please place a copy of the original BALL.BIN file in this directory and rename it to $(BASEROM)'
+	@false
+
 clean:
 	$(RM) $(BIN) $(ELF) $(O_FILES) $(DATAFILES) $(EXTRACT)
+
+# Extra dependencies
+asm/files.o: $(BASEROM)
+asm/header.o: $(BASEROM)
+
+asm/program.o: $(BASEROM)
