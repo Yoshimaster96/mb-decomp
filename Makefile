@@ -1,3 +1,7 @@
+ifneq (,$(findstring Windows,$(OS)))
+  EXE := .exe
+endif
+
 ### Build Options ###
 # Whether to verify the build output hash
 COMPARE ?= 1
