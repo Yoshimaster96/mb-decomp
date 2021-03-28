@@ -69,5 +69,4 @@ clean:
 # Extra dependencies
 asm/files.o: $(BASEROM)
 asm/header.o: $(BASEROM)
-
 asm/program.o: $(BASEROM)
