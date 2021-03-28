@@ -9,8 +9,8 @@
 
 .section .text
 _start:
-	bra	_start_L1			;# Normal entry point (r1 is already 0?)
-	 mov	#0x00, r1			;# Test mode entry point
+	bra	_start_L1			;#\Normal entry point
+	 mov	#0x00, r1			;#/
 _start_test:
 	mov	#0x01, r1
 _start_L1:
@@ -37,7 +37,7 @@ _clear_regs:
 	nop					;#|
 	nop					;#|
 	nop					;#/
-	mova	_sbss_ref, r0			;#\Get BSS location and size
+	mova	_bss_addr_ref, r0		;#\Get BSS location and size
 	mov.l	@r0+, r2			;#|
 	mov	#0x00, r3			;#|
 	mov.l	@r0+, r4			;#/
@@ -98,10 +98,10 @@ _unk_0C020094:
 	 nop					;#/
 
 	.balign 8
-_sbss_ref:
+_bss_addr_ref:
 	.4byte __sbss				;# r2
-_ebss_ref:
-	.4byte __ebss				;# r4
+_bss_sz_ref:
+	.4byte __sbss_size			;# r4
 _stack_ref:
 	.4byte __stack_begin			;# r15
 _entry_ref:

@@ -28,7 +28,8 @@ SECTIONS
 }
 
 __sbss = 0x0C20CAE0;
-__ebss = 0x000580F0;
+__sbss_size = 0x000580F0;
+__ebss = __sbss + __sbss_size;
 __stack_begin = 0x0CC00000;
 main = 0x0C0200E0;
 _testModeFlag = 0x0C0CAEF4;
