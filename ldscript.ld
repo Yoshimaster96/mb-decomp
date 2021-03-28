@@ -112,17 +112,15 @@ SECTIONS
 	. = 0x81E0000; files/snd/stream/st4a1.spsd.o(.data);
 	. = 0x8200000; files/snd/stream/st4b1.spsd.o(.data);
 	. = 0x8220000; files/snd/stream/st4b2.spsd.o(.data);
-	/* TODO: identify these unknown files */
-	. = 0x8500000; files/unknown1.bin.o(.data);
-	. = 0x8600000; files/unknown2.bin.o(.data);
-	. = 0x8700000; files/unknown3.bin.o(.data);
-	. = 0x8800000; files/unknown4.bin.o(.data);
-	. = 0x8900000; files/unknown5.bin.o(.data);
+	. = 0x8500000; files/bmp/bmp_com.lz.o(.data);
+	. = 0x8600000; files/bmp/bmp_sel.lz.o(.data);
+	. = 0x8700000; files/bmp/bmp_adv.lz.o(.data);
+	. = 0x8800000; files/bmp/bmp_rnk.lz.o(.data);
+	. = 0x8900000; files/bmp/bmp_end.lz.o(.data);
 	. = 0x8A80000; files/snd/stream/st1b2.spsd.o(.data);
 	. = 0x8E20000; files/snd/stream/st5a1.spsd.o(.data);
 	. = 0x8E40000; files/snd/stream/st5a2.spsd.o(.data);
 	. = 0x91A0000; files/snd/stream/st5b2.spsd.o(.data);
-	/* TODO: What is this? */
 	. = 0x9500000; files/motdat.bin.o(.data);
 	. = 0x9680000; files/motinfo.bin.o(.data);
 	. = 0x9700000; files/motlabel.bin.o(.data);
@@ -130,7 +128,8 @@ SECTIONS
 	. = 0x9760000; files/snd/stream/st5b1.spsd.o(.data);
 	. = 0x97A0000; files/snd/stream/st4a2.spsd.o(.data);
 	. = 0x99C0000; files/snd/stream/ent2.spsd.o(.data);
-	. = 0x9C00000; asm/files.o(.rodata2);
+	/* TODO: figure out what this is */
+	. = 0x9C00000; asm/files.o(.rodata);
 	. = 0x9C40000; files/snd/stream/st3a2.spsd.o(.data);
 	. = 0x9FE0000; files/snd/stream/st3a1.spsd.o(.data);
 	. = 0xA000000; files/snd/stream/st2b2.spsd.o(.data);
