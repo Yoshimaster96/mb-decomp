@@ -9,9 +9,12 @@ AS      := $(CROSS_PREFIX)as
 LD      := $(CROSS_PREFIX)ld
 OBJCOPY := $(CROSS_PREFIX)objcopy
 SHA1SUM := sha1sum
+HOSTCC  := cc
+EXTRACT := files/dump-files$(EXE)
 
-ASFLAGS := -EL
-LDFLAGS := -EL
+ASFLAGS     := -EL
+LDFLAGS     := -EL --accept-unknown-input-arch
+HOSTCCFLAGS := -Wall -O0 -g
 
 ### Files ###
 BASEROM := baserom.bin
@@ -19,19 +22,37 @@ BIN := monkeyball.bin
 ELF := $(BIN:.bin=.elf)
 LDSCRIPT := ldscript.ld
 S_FILES := $(wildcard asm/*.s) $(wildcard src/*.s)
-O_FILES := $(S_FILES:.s=.o)
+# Read list of files from file-list.txt
+DATAFILES := $(shell awk '{print "files/"$$1}' files/file-list.txt)
+O_FILES := $(S_FILES:.s=.o) $(DATAFILES:=.o)
+
+### Main Rules ###
+
+# Remove builtin rules
+MAKEFLAGS += --no-builtin-rules
+.SUFFIXES:
 
 $(BIN): $(ELF)
-	$(OBJCOPY) -O binary $< $@
+	$(OBJCOPY) --gap-fill 0x00 --pad-to 0x1A01F000 -O binary $< $@
 ifeq ($(COMPARE),1)
 	$(SHA1SUM) -c monkeyball.sha1
 endif
 
 $(ELF): $(LDSCRIPT) $(O_FILES)
-	$(LD) $(LDFLAGS) -T $(LDSCRIPT) $(O_FILES) -Map $(@:.elf=.map) -o $@
+	$(LD) $(LDFLAGS) -T $(LDSCRIPT) -Map $(@:.elf=.map) -o $@
 
 %.o: %.s
 	$(AS) $(ASFLAGS) $< -o $@
 
+%.o: %
+	$(OBJCOPY) -I binary -O elf32-little $< $@
+
+$(EXTRACT): files/dump-files.c
+	$(HOSTCC) $(HOSTCCFLAGS) $^ -o $@
+
+$(DATAFILES): $(EXTRACT) files/file-list.txt $(BASEROM)
+	@echo 'Extracting Files...'
+	cd files && ./dump-files$(EXE) ../baserom.bin
+
 clean:
-	$(RM) $(BIN) $(ELF) $(O_FILES)
+	$(RM) $(BIN) $(ELF) $(O_FILES) $(DATAFILES) $(EXTRACT)

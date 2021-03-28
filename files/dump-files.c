@@ -16,7 +16,7 @@ int main(int argc, char ** argv) {
 		return -1;
 	}
 	FILE * list = fopen("file-list.txt","r");
-	for(int i=0; i<103; i++) {
+	for(int i=0; i<108; i++) {
 		//Get data from list
 		char fileName[80];
 		long offset,size;
@@ -45,6 +45,7 @@ int main(int argc, char ** argv) {
 			fseek(fp,offset+8,SEEK_SET);
 			size = getc(fp)|(getc(fp)<<8)|(getc(fp)<<16)|(getc(fp)<<24);
 		}
+		printf("Extracting %s (size = %li)\n", fileName, size);
 		//Dump file
 		char * buffer = (char*)malloc(size);
 		FILE * out = fopen(fileName,"wb");

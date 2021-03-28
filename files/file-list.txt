@@ -101,3 +101,8 @@ snd/se/ape.dtpk 0AD40000 00000003
 snd/se/gal.dtpk 0AE20000 00000003
 snd/se/kid.dtpk 0AF00000 00000003
 snd/driver.bin 0AFE0000 0000B1E4
+unknown1.bin 08800000 00000000
+unknown2.bin 08900000 00000000
+unknown3.bin 08A00000 00000000
+unknown4.bin 08B00000 00000000
+unknown5.bin 08C00000 00000000

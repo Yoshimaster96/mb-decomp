@@ -4,6 +4,12 @@
 *.bin
 *.elf
 *.map
+files/dump-files
+
+# Asset files
+*.lz
+*.spsd
+*.dtpk
 
 # Temporary Ghidra Files
 ghidra/mb-decomp.rep/mb-decomp.*
